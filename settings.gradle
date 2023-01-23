@@ -1,1 +1,3 @@
 rootProject.name = 'product-kotlin'
+include 'domain:product-specification'
+include 'infrastructure'

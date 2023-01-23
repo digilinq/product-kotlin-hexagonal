@@ -1,0 +1,91 @@
+openapi: 3.0.3
+info:
+  title: Product Service Api
+  description: Product Service Api
+  version: 1.0.0
+servers:
+  - url: 'https'
+paths:
+  /products:
+    get:
+      description: Find products based on given parameters
+      operationId: findProducts
+      parameters:
+        - in: query
+          name: productName
+          required: false
+          schema:
+            type: string
+      responses:
+        200:
+          description: Products populated successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'
+components:
+  schemas:
+    Product:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        model:
+          type: string
+        brand:
+          type: string
+    TemplatedMail:
+      type: object
+      required:
+        - destination
+        - template
+        - locale
+        - data
+        - proposition
+      properties:
+        destination:
+          type: array
+          items:
+            type: string
+            example: email@example.org
+        subject:
+          type: string
+          example: Subject
+        content:
+          type: string
+          example: Content of the email
+        template:
+          type: string
+          example: template
+        locale:
+          $ref: '#/components/schemas/Locale'
+        data:
+          $ref: '#/components/schemas/MapEntry'
+        proposition:
+          type: string
+        userEmails:
+          type: array
+          items:
+            type: string
+        attachments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Attachment'
+    MapEntry:
+      type: object
+      additionalProperties:
+        type: object
+    Attachment:
+      type: object
+      properties:
+        filename:
+          type: string
+        nestedFilenames:
+          type: array
+          items:
+            type: string
