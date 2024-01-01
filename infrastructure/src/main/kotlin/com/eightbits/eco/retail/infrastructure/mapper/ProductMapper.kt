@@ -1,6 +1,6 @@
 package com.eightbits.eco.retail.infrastructure.mapper
 
-import org.digilinq.ecommerce.product.generated.v1.model.Product
+import com.eightbits.eco.retail.infrastructure.generated.v1.model.Product
 import com.eightbits.eco.retail.domain.product.model.ProductDto
 import com.eightbits.eco.retail.infrastructure.model.ProductEntity
 

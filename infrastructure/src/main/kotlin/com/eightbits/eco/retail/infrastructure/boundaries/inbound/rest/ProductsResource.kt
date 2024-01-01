@@ -1,8 +1,8 @@
 package com.eightbits.eco.retail.infrastructure.boundaries.inbound.rest
 
-import org.digilinq.ecommerce.product.generated.v1.api.ProductsApi
-import org.digilinq.ecommerce.product.generated.v1.model.Product
 import com.eightbits.eco.retail.domain.product.ProductService
+import com.eightbits.eco.retail.infrastructure.generated.v1.api.ProductsApi
+import com.eightbits.eco.retail.infrastructure.generated.v1.model.Product
 import com.eightbits.eco.retail.infrastructure.mapper.ProductMapper
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.RequestMapping
