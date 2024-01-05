@@ -7,6 +7,8 @@ import com.eightbits.eco.retail.infrastructure.mapper.ProductMapper
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder
+import java.net.URI
 
 @RequestMapping("/api/v1")
 @RestController
@@ -20,5 +22,17 @@ class ProductsResource(
             productMapper.map(it)
         }
         return ResponseEntity.ok(products)
+    }
+
+    override fun saveProduct(product: Product): ResponseEntity<Unit> {
+        val location: URI =
+            productService.save(productMapper.map(product))
+                .let { p ->
+                    ServletUriComponentsBuilder.fromCurrentRequestUri()
+                        .path("{id").buildAndExpand(p.id).encode()
+                        .toUri()
+                }
+
+        return ResponseEntity.created(location).build()
     }
 }
