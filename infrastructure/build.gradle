@@ -21,9 +21,11 @@ dependencies {
     implementation 'org.jetbrains.kotlin:kotlin-reflect'
     implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
 
+    // Open API Generator
     implementation 'io.swagger.core.v3:swagger-annotations:2.2.20'
     implementation 'io.swagger.core.v3:swagger-models:2.2.20'
 
+    // Mapstruct
     implementation 'org.mapstruct:mapstruct:1.5.5.Final'
     kapt 'org.mapstruct:mapstruct-processor:1.5.5.Final'
 
@@ -39,7 +41,9 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'de.flapdoodle.embed:de.flapdoodle.embed.mongo'
     testImplementation 'de.flapdoodle.embed:de.flapdoodle.embed.mongo.spring30x:4.7.0'
+    testImplementation 'io.mockk:mockk:1.13.8'
 
+    // Other modules
     implementation project(':domain:products')
 }
 

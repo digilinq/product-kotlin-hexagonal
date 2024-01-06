@@ -43,15 +43,16 @@ components:
   schemas:
     Product:
       type: object
+      required:
+        - name
+        - description
       properties:
         id:
           type: string
           format: uuid
         name:
           type: string
-        model:
-          type: string
-        brand:
+        description:
           type: string
     TemplatedMail:
       type: object

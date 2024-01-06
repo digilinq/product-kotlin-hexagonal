@@ -1,15 +1,12 @@
 package com.eightbits.eco.retail
 
+import com.eightbits.eco.retail.infrastructure.IntegrationTest
 import org.junit.jupiter.api.Test
-import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.test.context.ActiveProfiles
 
-@ActiveProfiles("test")
-@SpringBootTest
+@IntegrationTest
 class ProductApplicationTests {
 
 	@Test
 	fun contextLoads() {
 	}
-
 }

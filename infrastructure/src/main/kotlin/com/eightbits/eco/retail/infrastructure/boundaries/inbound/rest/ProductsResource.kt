@@ -29,7 +29,7 @@ class ProductsResource(
             productService.save(productMapper.map(product))
                 .let { p ->
                     ServletUriComponentsBuilder.fromCurrentRequestUri()
-                        .path("{id").buildAndExpand(p.id).encode()
+                        .path("/{id}").buildAndExpand(p.id).encode()
                         .toUri()
                 }
 
