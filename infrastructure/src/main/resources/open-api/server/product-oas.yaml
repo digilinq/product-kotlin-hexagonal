@@ -25,19 +25,34 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Product'
+    post:
+      summary: Add new product
+      requestBody:
+        description: Product specifiaction
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+      description: Add new product
+      operationId: saveProduct
+      responses:
+        201:
+          description: Product added successfully
 components:
   schemas:
     Product:
       type: object
+      required:
+        - name
+        - description
       properties:
         id:
           type: string
           format: uuid
         name:
           type: string
-        model:
-          type: string
-        brand:
+        description:
           type: string
     TemplatedMail:
       type: object
@@ -62,8 +77,8 @@ components:
         template:
           type: string
           example: template
-        locale:
-          $ref: '#/components/schemas/Locale'
+        #        locale:
+        #          $ref: '#/components/schemas/Locale'
         data:
           $ref: '#/components/schemas/MapEntry'
         proposition:
