@@ -6,7 +6,7 @@ import java.util.*
 
 @Document
 data class ProductEntity(
-    @Id val id: UUID,
+    @Id val id: String?,
     val name: String,
     val description: String
 )

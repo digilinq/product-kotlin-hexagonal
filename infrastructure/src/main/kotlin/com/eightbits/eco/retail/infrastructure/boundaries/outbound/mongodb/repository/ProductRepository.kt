@@ -6,4 +6,4 @@ import org.springframework.stereotype.Repository
 import java.util.UUID
 
 @Repository
-interface ProductRepository : MongoRepository<ProductEntity, UUID>
+interface ProductRepository : MongoRepository<ProductEntity, String>

@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   title: Product Service Api
   description: Product Service Api
-  version: 1.0.1
+  version: 1.0.2
 servers:
   - url: 'https'
 paths:
@@ -19,7 +19,6 @@ paths:
           required: true
           schema:
             type: string
-            format: uuid
       responses:
         200:
           description: OK
@@ -75,7 +74,6 @@ components:
       properties:
         id:
           type: string
-          format: uuid
         name:
           type: string
         description:

@@ -19,7 +19,7 @@ class ProductRepositoryAdapter(
         }
     }
 
-    override fun findById(id: UUID): Product {
+    override fun findById(id: String): Product {
         return repository.findById(id).map(mapper::map).orElseThrow {
             ProductNotFoundException("Product not found for id: $id")
         }

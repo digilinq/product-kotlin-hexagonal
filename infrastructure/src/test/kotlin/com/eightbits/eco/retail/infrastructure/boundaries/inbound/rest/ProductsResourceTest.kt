@@ -78,7 +78,7 @@ class ProductsResourceTest @Autowired constructor(
     }
 
     companion object {
-        val PRODUCT_ID: UUID = UUID.fromString("0a2e995b-f337-475b-a301-75cc8ee593e9")
+        val PRODUCT_ID: String = "659a6e2701513346391ffe34"
         const val PRODUCT_NAME = "Computer"
         val PRODUCT_DESCRIPTION = "Gaming computer"
         val ENDPOINT_PRODUCTS = "/api/v1/products"
