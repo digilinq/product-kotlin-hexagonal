@@ -1,4 +1,4 @@
-package com.eightbits.eco.retail.infrastructure.config
+package com.eightbits.eco.retail.infrastructure.configuration
 
 import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.databind.DeserializationFeature

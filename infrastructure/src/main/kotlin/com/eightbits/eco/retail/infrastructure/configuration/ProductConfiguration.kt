@@ -1,4 +1,4 @@
-package com.eightbits.eco.retail.infrastructure.config
+package com.eightbits.eco.retail.infrastructure.configuration
 
 import com.eightbits.eco.retail.domain.product.ProductService
 import com.eightbits.eco.retail.domain.product.ports.ProductRepositoryPort

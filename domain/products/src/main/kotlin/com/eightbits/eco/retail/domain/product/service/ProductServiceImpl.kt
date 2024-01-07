@@ -15,4 +15,8 @@ class ProductServiceImpl(
     override fun save(product: Product): Product {
         return Product(id = UUID.randomUUID(), name = product.name, description = product.description)
     }
+
+    override fun findById(id: UUID): Product {
+        return productRepositoryPort.findById(id)
+    }
 }

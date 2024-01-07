@@ -2,13 +2,37 @@ openapi: 3.0.3
 info:
   title: Product Service Api
   description: Product Service Api
-  version: 1.0.0
+  version: 1.0.1
 servers:
   - url: 'https'
 paths:
+  /products/{id}:
+    get:
+      summary: Represent a product
+      description: >
+        This resource represents an individual product in the system.
+        Each product is identified by a unique identifier `id`.
+      operationId: findProductById
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
   /products:
     get:
-      description: Find products based on given parameters
+      summary: Get a list of products
+      description: >
+        Find products based on given parameters
+        If no product find, empty list will be returened
       operationId: findProducts
       parameters:
         - in: query
@@ -26,7 +50,11 @@ paths:
                 items:
                   $ref: '#/components/schemas/Product'
     post:
-      summary: Add new product
+      summary: New product will be created
+      description: >
+        This resource will create and add new product.
+        Product id will be generated after successful operation
+      operationId: saveProduct
       requestBody:
         description: Product specifiaction
         required: true
@@ -34,8 +62,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Product'
-      description: Add new product
-      operationId: saveProduct
       responses:
         201:
           description: Product added successfully
