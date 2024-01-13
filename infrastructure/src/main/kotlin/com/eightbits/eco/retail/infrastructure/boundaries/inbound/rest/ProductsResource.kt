@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder
 import java.net.URI
+import java.util.*
 
 @RequestMapping("/api/v1")
 @RestController
@@ -27,7 +28,7 @@ class ProductsResource(
         return ResponseEntity.ok(products)
     }
 
-    override fun findProductById(id: String): ResponseEntity<Product> {
+    override fun findProductById(id: UUID): ResponseEntity<Product> {
         return productService.findById(id).let(mapper::map).let {
             ResponseEntity.ok(it)
         }

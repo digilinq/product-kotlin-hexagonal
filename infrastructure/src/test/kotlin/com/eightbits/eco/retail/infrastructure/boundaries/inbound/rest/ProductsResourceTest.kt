@@ -34,10 +34,10 @@ import java.util.*
 //)
 @Import(ProductMapperImpl::class, JacksonConfiguration::class)
 class ProductsResourceTest @Autowired constructor(
-    private val mockMvc: MockMvc,
-    private val applicationContext: ApplicationContext,
-    private val objectMapper: ObjectMapper,
-    private val productService: ProductService
+        private val mockMvc: MockMvc,
+        private val applicationContext: ApplicationContext,
+        private val objectMapper: ObjectMapper,
+        private val productService: ProductService
 ) {
     @TestConfiguration
     class SpringContextConfiguration {
@@ -48,7 +48,7 @@ class ProductsResourceTest @Autowired constructor(
     @Test
     fun `should contains products GET and POST endpoints`() {
         val requestMappingHandlerMapping =
-            applicationContext.getBean("requestMappingHandlerMapping", RequestMappingHandlerMapping::class.java)
+                applicationContext.getBean("requestMappingHandlerMapping", RequestMappingHandlerMapping::class.java)
         val map = requestMappingHandlerMapping.handlerMethods
         map.forEach { (key: RequestMappingInfo?, value: HandlerMethod?) ->
             println("$key $value")
@@ -58,10 +58,12 @@ class ProductsResourceTest @Autowired constructor(
     @Test
     fun `should return location as a header on save product`() {
         val product = Product(
-            id = PRODUCT_ID,
-            name = PRODUCT_NAME,
-            description = PRODUCT_DESCRIPTION
-        )
+                name = PRODUCT_NAME,
+                description = PRODUCT_DESCRIPTION
+        ).let {
+            it.id = PRODUCT_ID
+            it
+        }
 
         every { productService.save(any()) } returns product
 
@@ -78,9 +80,9 @@ class ProductsResourceTest @Autowired constructor(
     }
 
     companion object {
-        val PRODUCT_ID: String = "659a6e2701513346391ffe34"
+        val PRODUCT_ID: UUID = UUID.fromString("0a2e995b-f337-475b-a301-75cc8ee593e9")
         const val PRODUCT_NAME = "Computer"
-        val PRODUCT_DESCRIPTION = "Gaming computer"
-        val ENDPOINT_PRODUCTS = "/api/v1/products"
+        const val PRODUCT_DESCRIPTION = "Gaming computer"
+        const val ENDPOINT_PRODUCTS = "/api/v1/products"
     }
 }

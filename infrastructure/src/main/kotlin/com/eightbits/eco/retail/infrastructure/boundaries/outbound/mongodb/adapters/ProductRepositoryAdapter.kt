@@ -10,8 +10,8 @@ import java.util.*
 
 @Service
 class ProductRepositoryAdapter(
-    private val repository: ProductRepository,
-    private val mapper: ProductEntityMapper
+        private val repository: ProductRepository,
+        private val mapper: ProductEntityMapper
 ) : ProductRepositoryPort {
     override fun findAll(): List<Product> {
         return repository.findAll().let {
@@ -25,7 +25,14 @@ class ProductRepositoryAdapter(
         }
     }
 
+    override fun findByProductId(id: UUID): Product {
+        return repository.findByProductId(id).map(mapper::map).orElseThrow {
+            ProductNotFoundException("Product not found for id: $id")
+        }
+    }
+
     override fun save(product: Product): Product {
-        return repository.save(mapper.map(product)).let(mapper::map)
+        return repository.save(mapper.map(product))
+                .let(mapper::map)
     }
 }
