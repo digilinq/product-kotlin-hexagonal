@@ -3,16 +3,21 @@ package com.eightbits.eco.retail.domain.product.service
 import com.eightbits.eco.retail.domain.product.ProductService
 import com.eightbits.eco.retail.domain.product.model.Product
 import com.eightbits.eco.retail.domain.product.ports.ProductRepositoryPort
-import java.util.UUID
+import java.util.*
 
 class ProductServiceImpl(
     private val productRepositoryPort: ProductRepositoryPort
 ) : ProductService {
+
     override fun findAll(): List<Product> {
         return productRepositoryPort.findAll()
     }
 
     override fun save(product: Product): Product {
-        return Product(id = UUID.randomUUID(), name = product.name, description = product.description)
+        return productRepositoryPort.save(product)
+    }
+
+    override fun findById(id: UUID): Product {
+        return productRepositoryPort.findByProductId(id)
     }
 }

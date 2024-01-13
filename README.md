@@ -29,7 +29,7 @@ docker run --name mongodb -d -p 27017:27017 mongodb/mongodb-community-server:$MO
 ```shell
 docker run --name mongodb -d -p 27017:27017 mongodb/mongodb-community-server:6.0-ubi8
 
-docker run --name mongodb -d -p 27017:27017 -e MONGO_INITDB_ROOT_USERNAME=user -e MONGO_INITDB_ROOT_PASSWORD=pass -v $(pwd)/data:/data/db mongodb/mongodb-community-server:6.0-ubi8 
+docker run --name mongodb -d -p 27017:27017 -e MONGO_INITDB_ROOT_USERNAME=TechInnovative -e MONGO_INITDB_ROOT_PASSWORD=TechInnovative -v $(pwd)/data:/data/db mongodb/mongodb-community-server:6.0-ubi8 
 ```
 
 Connection String: mongodb://user:pass@mongodb
