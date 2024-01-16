@@ -8,7 +8,7 @@ on:
 
 jobs:
   print-vars:
-    environment: production
+    environment: test
     runs-on: ubuntu-latest
     steps:
       - name: Print vars
