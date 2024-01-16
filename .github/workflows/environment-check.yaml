@@ -12,4 +12,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Print vars
-        run: echo "${{ ENV }}"
+        env:
+          ENV1: ${{ ENV }}
+        run: echo "$ENV1"
