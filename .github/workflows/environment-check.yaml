@@ -1,0 +1,13 @@
+name: check-environments
+
+on:
+  push:
+    branches:
+      - main
+      - 'feature/*'
+jobs:
+  print-vars:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print vars
+        run: echo "$TOKEN"
