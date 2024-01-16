@@ -5,9 +5,11 @@ on:
     branches:
       - main
       - 'feature/*'
+
 jobs:
   print-vars:
+    environment: production
     runs-on: ubuntu-latest
     steps:
       - name: Print vars
-        run: echo "$TOKEN"
+        run: echo "ENV"
