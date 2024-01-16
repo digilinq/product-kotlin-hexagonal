@@ -13,5 +13,5 @@ jobs:
     steps:
       - name: Print vars
         env:
-          ENV1: ${{ ENV }}
+          ENV1: ${{ vars.ENV }}
         run: echo "$ENV1"
