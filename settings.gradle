@@ -12,4 +12,4 @@ pluginManagement {
 
 rootProject.name = 'product-kotlin'
 include 'domain:products'
-include 'infrastructure'
+include 'infrastructure:web'

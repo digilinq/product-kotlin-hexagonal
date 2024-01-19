@@ -83,7 +83,7 @@ def generatedPath = 'com.eightbits.eco.retail.infrastructure.generated.v1'
 openApiGenerate {
     generatorName = 'kotlin-spring'
     library = 'spring-boot'
-    inputSpec = "$rootDir/infrastructure/src/main/resources/open-api/server/product-oas.yaml" as String
+    inputSpec = "$rootDir/infrastructure/web/src/main/resources/open-api/server/product-oas.yaml" as String
     outputDir = "$buildDir/generated/open-api/server" as String
     packageName = generatedPath
     apiPackage = 'com.eightbits.eco.retail.infrastructure.generated.v1.api'
