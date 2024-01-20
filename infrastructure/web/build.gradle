@@ -44,8 +44,8 @@ dependencies {
     // Test
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
-    testImplementation 'de.flapdoodle.embed:de.flapdoodle.embed.mongo:4.7.0'
-    testImplementation 'de.flapdoodle.embed:de.flapdoodle.embed.mongo.spring30x:4.7.0'
+    testImplementation 'de.flapdoodle.embed:de.flapdoodle.embed.mongo:4.7.1'
+    testImplementation 'de.flapdoodle.embed:de.flapdoodle.embed.mongo.spring30x:4.7.1'
 
     testImplementation 'io.mockk:mockk:1.13.8'
 
@@ -68,7 +68,13 @@ tasks.withType(KotlinCompile) {
     }
 }
 
-tasks.named('test') {
+// tasks.named('test') {
+test {
+    systemProperties = [
+            "TEST_VAR"                 : "test",
+            "de.flapdoodle.os.override": "Linux|X86_64|Ubuntu|Ubuntu_22_04"
+    ]
+    println "Starting Tests ..."
     useJUnitPlatform()
 }
 
