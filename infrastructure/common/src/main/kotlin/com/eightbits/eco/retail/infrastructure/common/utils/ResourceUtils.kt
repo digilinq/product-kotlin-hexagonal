@@ -1,4 +1,4 @@
-package com.eightbits.eco.retail.common.utils
+package com.eightbits.eco.retail.infrastructure.common.utils
 
 import com.eightbits.eco.retail.infrastructure.configuration.JacksonConfiguration
 import com.fasterxml.jackson.module.kotlin.readValue
@@ -6,6 +6,7 @@ import org.springframework.core.io.ClassPathResource
 import java.nio.charset.Charset
 
 val objectMapper = JacksonConfiguration.objectMapper
+
 fun readAsString(path: String): String {
     val resource = ClassPathResource(path)
     return resource.getContentAsString(Charset.defaultCharset())
