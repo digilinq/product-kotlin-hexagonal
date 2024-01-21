@@ -82,33 +82,38 @@ test {
 
 sourceSets {
     main {
-        kotlin.srcDirs += "$buildDir/generated/open-api/server/src/main/kotlin"
+        kotlin.srcDirs = [
+                'src/main/kotlin',
+                layout.buildDirectory.dir("generated/open-api/server/src/main/kotlin")
+        ]
+//        kotlin.srcDirs += "$buildDir/generated/open-api/server/src/main/kotlin"
     }
 }
 
-def generatedPath = 'com.eightbits.eco.retail.infrastructure.generated.v1'
+def basePackage = 'com.eightbits.eco.retail.infrastructure.generated.v1'
 
 openApiGenerate {
     generatorName = 'kotlin-spring'
     library = 'spring-boot'
-    inputSpec = "$rootDir/infrastructure/web/src/main/resources/open-api/server/product-oas.yaml" as String
-    outputDir = "$buildDir/generated/open-api/server" as String
-    packageName = generatedPath
-    apiPackage = 'com.eightbits.eco.retail.infrastructure.generated.v1.api'
-    modelPackage = 'com.eightbits.eco.retail.infrastructure.generated.v1.model'
-    invokerPackage = 'com.eightbits.eco.retail.infrastructure.generated.v1.invoker'
+    inputSpec = "$projectDir/src/main/resources/open-api/server/product-oas.yaml"
+    outputDir = "${layout.buildDirectory.get().asFile}/generated/open-api/server"
+    packageName = basePackage
+    apiPackage = "${basePackage}.api"
+    modelPackage = "${basePackage}.model"
+    invokerPackage = "${basePackage}.invoker"
+//    modelNameSuffix = "Dto"
     enablePostProcessFile = true
     skipOverwrite = false
-    configOptions = [
+    configOptions.set([
             interfaceOnly       : 'true',
             useSpringBoot3      : 'true',
             enumPropertyNaming  : "original",
             serializationLibrary: 'jackson',
             dateLibrary         : 'java8'
-    ]
-    importMappings = [
-            Locale: 'java.util.Locale',
-    ]
+    ])
+    importMappings.set([
+            Locale: "java.util.Locale",
+    ])
 }
 
 tasks.withType(KotlinCompile).configureEach {

@@ -56,7 +56,7 @@ paths:
         Product id will be generated after successful operation
       operationId: saveProduct
       requestBody:
-        description: Product specifiaction
+        description: Product specification
         required: true
         content:
           application/json:
@@ -67,6 +67,8 @@ paths:
           description: Product added successfully
 components:
   schemas:
+#    Locale:
+#      type: object
     Product:
       type: object
       required:
@@ -103,8 +105,8 @@ components:
         template:
           type: string
           example: template
-        #        locale:
-        #          $ref: '#/components/schemas/Locale'
+#        locale:
+#          $ref: '#/components/schemas/Locale'
         data:
           $ref: '#/components/schemas/MapEntry'
         proposition:
