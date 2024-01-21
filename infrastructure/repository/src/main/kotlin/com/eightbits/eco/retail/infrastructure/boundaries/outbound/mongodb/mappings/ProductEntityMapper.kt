@@ -4,8 +4,9 @@ import com.eightbits.eco.retail.domain.product.model.Product
 import com.eightbits.eco.retail.infrastructure.boundaries.outbound.mongodb.entities.ProductEntity
 import org.mapstruct.Mapper
 import org.mapstruct.Mapping
+import org.mapstruct.MappingConstants.ComponentModel
 
-@Mapper
+@Mapper(componentModel = ComponentModel.SPRING)
 interface ProductEntityMapper {
 
     @Mapping(target = "id", source = "productId")

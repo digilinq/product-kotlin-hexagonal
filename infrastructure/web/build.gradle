@@ -20,7 +20,6 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'com.fasterxml.jackson.module:jackson-module-kotlin'
     implementation 'org.jetbrains.kotlin:kotlin-reflect'
-    implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
 
     // Open API Generator
     implementation 'io.swagger.core.v3:swagger-annotations:2.2.20'
@@ -44,15 +43,16 @@ dependencies {
 
     // Test
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-
-    testImplementation 'de.flapdoodle.embed:de.flapdoodle.embed.mongo:4.7.1'
-    testImplementation 'de.flapdoodle.embed:de.flapdoodle.embed.mongo.spring30x:4.7.1'
-
     testImplementation 'io.mockk:mockk:1.13.8'
+
+    // Embedded MongoDB
+    testRuntimeOnly 'de.flapdoodle.embed:de.flapdoodle.embed.mongo:4.7.1'
+    testRuntimeOnly 'de.flapdoodle.embed:de.flapdoodle.embed.mongo.spring30x:4.7.1'
 
     // Other modules
     implementation project(':domain:products')
     implementation project(':infrastructure:common')
+    runtimeOnly project(':infrastructure:repository')
 }
 
 kapt {

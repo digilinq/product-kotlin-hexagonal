@@ -1,7 +1,6 @@
 package com.eightbits.eco.retail
 
 import com.eightbits.eco.retail.infrastructure.IntegrationTest
-import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 
 @IntegrationTest
