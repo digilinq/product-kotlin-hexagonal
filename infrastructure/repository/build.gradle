@@ -39,5 +39,10 @@ kapt {
 }
 
 test {
+    systemProperties = [
+            "TEST_VAR"                 : "test",
+            "de.flapdoodle.os.override": "Linux|X86_64|Ubuntu|Ubuntu_22_04"
+    ]
     println("Starting test in repository ...")
+    useJUnitPlatform()
 }
