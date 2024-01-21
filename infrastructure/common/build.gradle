@@ -1,0 +1,34 @@
+plugins {
+    id 'io.spring.dependency-management'
+
+
+    /**
+     * Kotlin has classes and their members `final` by default, which makes it inconvenient to use frameworks
+     * and libraries such as Spring AOP that require classes to be `open`.
+     * The `all-open` compiler plugin adapts Kotlin to the requirements of those frameworks
+     * and makes classes annotated with a specific annotation and their members open without the explicit open keyword.
+     * For instance, when you use Spring, you don't need all the classes to be open,
+     * but only classes annotated with specific annotations like `@Configuration` or `@Service`.
+     * The `all-open` plugin allows you to specify such annotations.
+     * The `kotlin-spring` is a wrapper on top of `all-open`, and it behaves exactly the same way.
+     * @see <a href="https://kotlinlang.org/docs/all-open-plugin.html">All-open compiler plugin</a>
+     */
+    id 'org.jetbrains.kotlin.plugin.spring'
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.boot:spring-boot-dependencies:$springBootVersion"
+    }
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.springframework.boot:spring-boot-starter-json'
+    implementation 'com.fasterxml.jackson.module:jackson-module-kotlin'
+}
+
+test {
+    println("Starting test in common library ...")
+    useJUnitPlatform()
+}
