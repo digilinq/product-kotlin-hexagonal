@@ -8,13 +8,14 @@ on:
 
 jobs:
   print-vars:
-    environment: production
+    environment: test
     runs-on: ubuntu-latest
     steps:
       - name: Print vars
         env:
           ENV1: ${{ vars.ENV }}
         run: |
-          echo "----------"
-          echo "$ENV1"          
-          echo "----------"
+          echo "-----------------------"
+          echo "$ENV1"
+          echo "-----------------------"
+          
