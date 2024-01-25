@@ -1,9 +1,9 @@
-package com.eightbits.eco.retail.infrastructure.boundaries.inbound.rest
+package com.eightbits.eco.retail.infrastructure.web.resources
 
 import com.eightbits.eco.retail.domain.product.ProductService
 import com.eightbits.eco.retail.domain.product.model.Product
-import com.eightbits.eco.retail.infrastructure.boundaries.inbound.mappings.ProductMapperImpl
 import com.eightbits.eco.retail.infrastructure.configuration.JacksonConfiguration
+import com.eightbits.eco.retail.infrastructure.web.mappings.ProductMapperImpl
 import com.fasterxml.jackson.databind.ObjectMapper
 import io.mockk.every
 import io.mockk.mockk

@@ -1,4 +1,4 @@
-package com.eightbits.eco.retail.infrastructure.boundaries.inbound.mappings
+package com.eightbits.eco.retail.infrastructure.web.mappings
 
 import com.eightbits.eco.retail.domain.product.model.Product
 import org.mapstruct.Mapper

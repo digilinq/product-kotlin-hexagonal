@@ -1,7 +1,7 @@
-package com.eightbits.eco.retail.infrastructure.boundaries.inbound.rest
+package com.eightbits.eco.retail.infrastructure.web.resources
 
 import com.eightbits.eco.retail.domain.product.ProductService
-import com.eightbits.eco.retail.infrastructure.boundaries.inbound.mappings.ProductMapper
+import com.eightbits.eco.retail.infrastructure.web.mappings.ProductMapper
 import com.eightbits.eco.retail.infrastructure.generated.v1.api.ProductsApi
 import com.eightbits.eco.retail.infrastructure.generated.v1.model.Product
 import org.slf4j.LoggerFactory

@@ -1,4 +1,4 @@
-package com.eightbits.eco.retail.infrastructure.boundaries.inbound.rest
+package com.eightbits.eco.retail.infrastructure.web.resources
 
 import com.eightbits.eco.retail.infrastructure.IntegrationTest
 import org.junit.jupiter.api.Assertions.*
