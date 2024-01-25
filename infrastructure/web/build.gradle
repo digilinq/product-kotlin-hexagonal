@@ -1,0 +1,131 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
+plugins {
+    id 'org.springframework.boot'
+    id 'io.spring.dependency-management'
+
+    id 'org.jetbrains.kotlin.plugin.spring'
+    id 'org.jetbrains.kotlin.kapt'
+
+    id 'org.openapi.generator'
+//	id 'org.jlleitschuh.gradle.ktlint' version '11.0.0'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'com.fasterxml.jackson.module:jackson-module-kotlin'
+    implementation 'org.jetbrains.kotlin:kotlin-reflect'
+
+    // Open API Generator
+    implementation 'io.swagger.core.v3:swagger-annotations:2.2.20'
+    implementation 'io.swagger.core.v3:swagger-models:2.2.20'
+
+    // Mapstruct
+    implementation "org.mapstruct:mapstruct:$mapStructVersion"
+    kapt "org.mapstruct:mapstruct-processor:$mapStructVersion"
+
+//    compileOnly 'jakarta.annotation:jakarta.annotation-api:2.1.1'
+
+//    implementation 'org.springdoc:springdoc-openapi-data-rest:1.6.13'
+//    implementation 'org.springdoc:springdoc-openapi-ui:1.6.13'
+//    implementation 'org.springdoc:springdoc-openapi-kotlin:1.6.13'
+
+    // Swagger UI
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.3.0'
+
+    // Others
+    implementation 'commons-io:commons-io:2.15.1'
+
+    // Test
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'io.mockk:mockk:1.13.8'
+
+    // Embedded MongoDB
+    testRuntimeOnly 'de.flapdoodle.embed:de.flapdoodle.embed.mongo:4.7.1'
+    testRuntimeOnly 'de.flapdoodle.embed:de.flapdoodle.embed.mongo.spring30x:4.7.1'
+
+    // Other modules
+    implementation project(':domain:products')
+    implementation project(':infrastructure:common')
+    runtimeOnly project(':infrastructure:repository')
+}
+
+kapt {
+    arguments {
+        arg("mapstruct.unmappedTargetPolicy", "ignore")
+        arg("mapstruct.defaultComponentModel", "spring")
+    }
+    keepJavacAnnotationProcessors = true
+}
+
+tasks.withType(KotlinCompile) {
+    kotlinOptions {
+        freeCompilerArgs = ['-Xjsr305=strict']
+        jvmTarget = '17'
+    }
+}
+
+// tasks.named('test') {
+test {
+    systemProperties = [
+            "TEST_VAR"                 : "test",
+            "de.flapdoodle.os.override": "Linux|X86_64|Ubuntu|Ubuntu_22_04"
+    ]
+    println "Starting Tests ..."
+    useJUnitPlatform()
+}
+
+sourceSets {
+    main {
+        kotlin.srcDirs = [
+                'src/main/kotlin',
+                layout.buildDirectory.dir("generated/open-api/server/src/main/kotlin")
+        ]
+//        kotlin.srcDirs += "$buildDir/generated/open-api/server/src/main/kotlin"
+    }
+}
+
+def basePackage = 'com.eightbits.eco.retail.infrastructure.generated.v1'
+
+openApiGenerate {
+    generatorName = 'kotlin-spring'
+    library = 'spring-boot'
+    inputSpec = "$projectDir/src/main/resources/open-api/server/product-oas.yaml"
+    outputDir = "${layout.buildDirectory.get().asFile}/generated/open-api/server"
+    packageName = basePackage
+    apiPackage = "${basePackage}.api"
+    modelPackage = "${basePackage}.model"
+    invokerPackage = "${basePackage}.invoker"
+//    modelNameSuffix = "Dto"
+    enablePostProcessFile = true
+    skipOverwrite = false
+    configOptions.set([
+            interfaceOnly       : 'true',
+            useSpringBoot3      : 'true',
+            enumPropertyNaming  : "original",
+            serializationLibrary: 'jackson',
+            dateLibrary         : 'java8'
+    ])
+    importMappings.set([
+            Locale: "java.util.Locale",
+    ])
+}
+
+tasks.withType(KotlinCompile).configureEach {
+    dependsOn("openApiGenerate")
+}
+
+//compileKotlin.dependsOn tasks.openApiGenerate
+//compileTestKotlin.dependsOn tasks.openApiGenerate
+
+
+//ktlint {
+//	filter {
+//		exclude("**/generated/**")
+//	}
+//}
