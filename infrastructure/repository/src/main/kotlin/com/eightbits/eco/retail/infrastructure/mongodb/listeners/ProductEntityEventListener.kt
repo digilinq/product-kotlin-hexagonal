@@ -1,6 +1,6 @@
-package com.eightbits.eco.retail.infrastructure.boundaries.outbound.mongodb.listeners
+package com.eightbits.eco.retail.infrastructure.mongodb.listeners
 
-import com.eightbits.eco.retail.infrastructure.boundaries.outbound.mongodb.entities.ProductEntity
+import com.eightbits.eco.retail.infrastructure.mongodb.entities.ProductEntity
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.data.mongodb.core.mapping.event.AbstractMongoEventListener

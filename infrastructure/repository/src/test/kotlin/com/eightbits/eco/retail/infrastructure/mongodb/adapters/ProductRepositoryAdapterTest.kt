@@ -1,8 +1,8 @@
-package com.eightbits.eco.retail.infrastructure.boundaries.outbound.mongodb.adapters
+package com.eightbits.eco.retail.infrastructure.mongodb.adapters
 
 import com.eightbits.eco.retail.common.mockdata.MockEntityModel
-import com.eightbits.eco.retail.infrastructure.boundaries.outbound.mongodb.listeners.ProductEntityEventListener
-import com.eightbits.eco.retail.infrastructure.boundaries.outbound.mongodb.repository.ProductRepository
+import com.eightbits.eco.retail.infrastructure.mongodb.listeners.ProductEntityEventListener
+import com.eightbits.eco.retail.infrastructure.mongodb.repository.ProductRepository
 import com.mongodb.DBObject
 import com.mongodb.client.MongoClient
 import org.assertj.core.api.Assertions.assertThat

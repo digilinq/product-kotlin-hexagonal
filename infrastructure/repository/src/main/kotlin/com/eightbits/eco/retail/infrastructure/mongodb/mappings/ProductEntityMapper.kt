@@ -1,7 +1,7 @@
-package com.eightbits.eco.retail.infrastructure.boundaries.outbound.mongodb.mappings
+package com.eightbits.eco.retail.infrastructure.mongodb.mappings
 
 import com.eightbits.eco.retail.domain.product.model.Product
-import com.eightbits.eco.retail.infrastructure.boundaries.outbound.mongodb.entities.ProductEntity
+import com.eightbits.eco.retail.infrastructure.mongodb.entities.ProductEntity
 import org.mapstruct.Mapper
 import org.mapstruct.Mapping
 import org.mapstruct.MappingConstants.ComponentModel

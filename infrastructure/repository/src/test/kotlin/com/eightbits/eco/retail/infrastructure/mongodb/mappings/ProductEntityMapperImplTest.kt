@@ -1,7 +1,7 @@
-package com.eightbits.eco.retail.infrastructure.boundaries.outbound.mongodb.mappings
+package com.eightbits.eco.retail.infrastructure.mongodb.mappings
 
 import com.eightbits.eco.retail.domain.product.model.Product
-import com.eightbits.eco.retail.infrastructure.boundaries.outbound.mongodb.entities.ProductEntity
+import com.eightbits.eco.retail.infrastructure.mongodb.entities.ProductEntity
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith

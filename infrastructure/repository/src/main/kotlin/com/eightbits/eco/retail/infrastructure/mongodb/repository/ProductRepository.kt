@@ -1,6 +1,6 @@
-package com.eightbits.eco.retail.infrastructure.boundaries.outbound.mongodb.repository
+package com.eightbits.eco.retail.infrastructure.mongodb.repository
 
-import com.eightbits.eco.retail.infrastructure.boundaries.outbound.mongodb.entities.ProductEntity
+import com.eightbits.eco.retail.infrastructure.mongodb.entities.ProductEntity
 import org.springframework.data.mongodb.repository.MongoRepository
 import org.springframework.stereotype.Repository
 import java.util.*

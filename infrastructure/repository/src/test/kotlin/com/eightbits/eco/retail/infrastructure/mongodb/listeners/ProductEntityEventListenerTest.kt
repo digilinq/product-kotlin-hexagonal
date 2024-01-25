@@ -1,6 +1,7 @@
-package com.eightbits.eco.retail.infrastructure.boundaries.outbound.mongodb.listeners
+package com.eightbits.eco.retail.infrastructure.mongodb.listeners
 
-import com.eightbits.eco.retail.infrastructure.boundaries.outbound.mongodb.entities.ProductEntity
+import com.eightbits.eco.retail.infrastructure.mongodb.entities.ProductEntity
+import com.eightbits.eco.retail.infrastructure.mongodb.listeners.ProductEntityEventListener
 import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Test
 

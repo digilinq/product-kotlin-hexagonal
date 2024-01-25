@@ -1,6 +1,6 @@
 package com.eightbits.eco.retail.infrastructure.configuration
 
-import com.eightbits.eco.retail.infrastructure.boundaries.outbound.mongodb.listeners.ProductEntityEventListener
+import com.eightbits.eco.retail.infrastructure.mongodb.listeners.ProductEntityEventListener
 import com.mongodb.client.MongoClient
 import de.flapdoodle.os.CommonOS
 import de.flapdoodle.os.Platform

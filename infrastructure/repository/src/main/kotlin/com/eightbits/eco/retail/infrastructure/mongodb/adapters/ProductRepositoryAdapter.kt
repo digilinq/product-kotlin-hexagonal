@@ -1,17 +1,17 @@
-package com.eightbits.eco.retail.infrastructure.boundaries.outbound.mongodb.adapters
+package com.eightbits.eco.retail.infrastructure.mongodb.adapters
 
 import com.eightbits.eco.retail.domain.product.model.Product
 import com.eightbits.eco.retail.domain.product.model.ProductNotFoundException
 import com.eightbits.eco.retail.domain.product.ports.ProductRepositoryPort
-import com.eightbits.eco.retail.infrastructure.boundaries.outbound.mongodb.mappings.ProductEntityMapper
-import com.eightbits.eco.retail.infrastructure.boundaries.outbound.mongodb.repository.ProductRepository
+import com.eightbits.eco.retail.infrastructure.mongodb.mappings.ProductEntityMapper
+import com.eightbits.eco.retail.infrastructure.mongodb.repository.ProductRepository
 import org.springframework.stereotype.Service
 import java.util.*
 
 @Service
 class ProductRepositoryAdapter(
-        private val repository: ProductRepository,
-        private val mapper: ProductEntityMapper
+    private val repository: ProductRepository,
+    private val mapper: ProductEntityMapper
 ) : ProductRepositoryPort {
     override fun findAll(): List<Product> {
         return repository.findAll().let {

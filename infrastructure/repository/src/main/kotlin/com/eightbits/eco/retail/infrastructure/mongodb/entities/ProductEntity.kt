@@ -1,4 +1,4 @@
-package com.eightbits.eco.retail.infrastructure.boundaries.outbound.mongodb.entities
+package com.eightbits.eco.retail.infrastructure.mongodb.entities
 
 import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.index.Indexed
