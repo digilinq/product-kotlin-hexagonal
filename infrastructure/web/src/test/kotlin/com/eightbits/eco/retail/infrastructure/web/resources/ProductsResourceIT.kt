@@ -8,6 +8,7 @@ import com.eightbits.eco.retail.infrastructure.mongodb.repository.ProductReposit
 import com.eightbits.eco.retail.infrastructure.web.resources.ProductsResourceIT.Companion.LOG_LEVEL
 import org.assertj.core.api.Assertions.assertThat
 import org.hamcrest.core.IsIterableContaining.hasItems
+import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
@@ -15,6 +16,8 @@ import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.core.env.AbstractEnvironment
 import org.springframework.core.env.Environment
 import org.springframework.core.env.MapPropertySource
+import org.springframework.data.mongodb.core.MongoTemplate
+import org.springframework.data.mongodb.core.query.Query
 import org.springframework.http.MediaType
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.get
@@ -30,8 +33,14 @@ import org.springframework.test.web.servlet.post
 class ProductsResourceIT @Autowired constructor(
     private val mockMvc: MockMvc,
     private val productRepository: ProductRepository,
-    private val env: Environment
+    private val env: Environment,
+    private val mongoTemplate: MongoTemplate
 ) {
+
+    @AfterEach
+    fun tearDown() {
+        mongoTemplate.remove(Query(), ProductEntity::class.java)
+    }
 
     @Test
     fun `log level should be warning`() {
