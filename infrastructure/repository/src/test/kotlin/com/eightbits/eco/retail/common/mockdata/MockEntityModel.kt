@@ -1,6 +1,6 @@
 package com.eightbits.eco.retail.common.mockdata
 
-import com.eightbits.eco.retail.infrastructure.boundaries.outbound.mongodb.entities.ProductEntity
+import com.eightbits.eco.retail.infrastructure.mongodb.entities.ProductEntity
 import com.eightbits.eco.retail.infrastructure.common.utils.ResourceApiModel
 
 class MockEntityModel {

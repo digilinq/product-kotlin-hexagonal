@@ -3,7 +3,7 @@ plugins {
 }
 
 subprojects {
-    group = 'com.eightbits.eco.retail'
+    group = 'com.eightbits.commerce.retail'
     version = '0.0.1-SNAPSHOT'
 
     apply plugin: 'org.jetbrains.kotlin.jvm'

@@ -52,7 +52,11 @@ dependencies {
     // Other modules
     implementation project(':domain:products')
     implementation project(':infrastructure:common')
+
     runtimeOnly project(':infrastructure:repository')
+    testCompileOnly project(':infrastructure:repository')
+    testImplementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
+
 }
 
 kapt {
