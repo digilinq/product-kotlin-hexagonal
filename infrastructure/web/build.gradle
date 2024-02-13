@@ -124,6 +124,12 @@ tasks.withType(KotlinCompile).configureEach {
     dependsOn("openApiGenerate")
 }
 
+tasks {
+    bootJar {
+        archiveFileName.set("products.jar")
+    }
+}
+
 //compileKotlin.dependsOn tasks.openApiGenerate
 //compileTestKotlin.dependsOn tasks.openApiGenerate
 
