@@ -32,7 +32,7 @@ jobs:
           arguments: build
 #          arguments: -b ci.gradle package
       - run: mkdir staging && cp infrastructure/web/build/libs/*.jar staging
-      - run: cp deployment/Dockerfile staging
+      - run: cp ci/Dockerfile staging
       - uses: actions/upload-artifact@v3
         with:
           name: Package
