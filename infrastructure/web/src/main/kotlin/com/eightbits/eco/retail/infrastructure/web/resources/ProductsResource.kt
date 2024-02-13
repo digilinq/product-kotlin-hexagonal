@@ -6,6 +6,7 @@ import com.eightbits.eco.retail.infrastructure.generated.v1.api.ProductsApi
 import com.eightbits.eco.retail.infrastructure.generated.v1.model.Product
 import org.slf4j.LoggerFactory
 import org.springframework.http.ResponseEntity
+import org.springframework.web.bind.annotation.CrossOrigin
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder
@@ -21,7 +22,11 @@ class ProductsResource(
 
     private val logger = LoggerFactory.getLogger(ProductsResource::class.java)
 
+    @CrossOrigin(origins = ["*"])
     override fun findProducts(productName: String?): ResponseEntity<List<Product>> {
+
+        logger.info("Find all products")
+
         val products = productService.findAll().let {
             mapper.map(it)
         }
@@ -34,6 +39,7 @@ class ProductsResource(
         }
     }
 
+    @CrossOrigin(origins = ["*"])
     override fun saveProduct(product: Product): ResponseEntity<Unit> {
         logger.info("Save product: $product")
 
