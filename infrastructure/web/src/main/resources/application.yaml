@@ -4,6 +4,10 @@ spring:
       database:
       uri:
       auto-index-creation: true
+logging:
+  level:
+    root: DEBUG
+
 ---
 spring:
   config:
