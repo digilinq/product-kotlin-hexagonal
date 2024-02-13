@@ -29,7 +29,8 @@ jobs:
       - name: Run the Gradle package task
         uses: gradle/gradle-build-action@749f47bda3e44aa060e82d7b3ef7e40d953bd629
         with:
-          arguments: -b ci.gradle package
+          arguments: build
+#          arguments: -b ci.gradle package
       - run: mkdir staging && cp web/target/*.jar staging
       - run: cp deployment/Dockerfile staging
       - uses: actions/upload-artifact@v3
