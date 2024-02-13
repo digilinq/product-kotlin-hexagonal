@@ -13,7 +13,7 @@ env:
   PACKAGE: ${{ vars.PACKAGE_NAME }}
 jobs:
   build:
-    name: Build maven project
+    name: Build gradle project
 #    if: endsWith(github.event.base_ref, 'main') == true
     runs-on: ubuntu-latest
     steps:
