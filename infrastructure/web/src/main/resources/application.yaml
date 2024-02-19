@@ -6,8 +6,15 @@ spring:
       auto-index-creation: true
 logging:
   level:
-    root: DEBUG
-
+    root: INFO
+    org.springframework.web.filter.CommonsRequestLoggingFilter: DEBUG
+management:
+  server:
+    port: 8081
+  endpoints:
+    web:
+      exposure:
+        include: prometheus,health,info,metric,httpexchanges
 ---
 spring:
   config:
