@@ -41,16 +41,14 @@ class ProductsResource(
 
     @CrossOrigin(origins = ["*"])
     override fun saveProduct(product: Product): ResponseEntity<Unit> {
-        logger.info("Save product: $product")
+        logger.debug("Saving product: {}", product)
 
         val location: URI = productService.save(mapper.map(product)).let { p ->
             ServletUriComponentsBuilder.fromCurrentRequestUri()
                 .path("/{id}").buildAndExpand(p.id).encode()
                 .toUri()
         }
-
-        logger.debug("Location: {}", location.toString())
-
+        logger.debug("Product saved: {}", location.toString())
         return ResponseEntity.created(location).build()
     }
 
