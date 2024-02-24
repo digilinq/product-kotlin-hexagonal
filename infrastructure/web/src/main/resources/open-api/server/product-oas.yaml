@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   title: Product Service Api
   description: Product Service Api
-  version: 1.0.2
+  version: 1.0.4
 servers:
   - url: 'https'
 paths:
@@ -88,7 +88,7 @@ paths:
       summary: Get a list of products
       description: >
         Find products based on given parameters
-        If no product find, empty list will be returened
+        If no product find, empty list will be returned
       operationId: findProducts
       parameters:
         - in: query
@@ -123,8 +123,8 @@ paths:
           description: Product added successfully
 components:
   schemas:
-#    Locale:
-#      type: object
+    #    Locale:
+    #      type: object
     Product:
       type: object
       required:
@@ -136,8 +136,12 @@ components:
           format: uuid
         name:
           type: string
+          minLength: 3
+          maxLength: 100
         description:
           type: string
+          minLength: 3
+          maxLength: 100
     TemplatedMail:
       type: object
       required:
@@ -161,8 +165,8 @@ components:
         template:
           type: string
           example: template
-#        locale:
-#          $ref: '#/components/schemas/Locale'
+        #        locale:
+        #          $ref: '#/components/schemas/Locale'
         data:
           $ref: '#/components/schemas/MapEntry'
         proposition:
