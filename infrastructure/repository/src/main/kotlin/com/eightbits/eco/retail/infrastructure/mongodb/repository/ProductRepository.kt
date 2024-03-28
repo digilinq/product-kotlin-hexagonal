@@ -8,4 +8,5 @@ import java.util.*
 @Repository
 interface ProductRepository : MongoRepository<ProductEntity, String> {
     fun findByProductId(productId: UUID): Optional<ProductEntity>
+    fun deleteByProductId(productId: UUID)
 }

@@ -32,7 +32,10 @@ class ProductRepositoryAdapter(
     }
 
     override fun save(product: Product): Product {
-        return repository.save(mapper.map(product))
-                .let(mapper::map)
+        return repository.save(mapper.map(product)).let(mapper::map)
+    }
+
+    override fun removeByProductId(id: UUID) {
+        return repository.deleteByProductId(id)
     }
 }

@@ -17,6 +17,10 @@ class ProductServiceImpl(
         return productRepositoryPort.save(product)
     }
 
+    override fun remove(id: UUID) {
+        productRepositoryPort.removeByProductId(id)
+    }
+
     override fun findById(id: UUID): Product {
         return productRepositoryPort.findByProductId(id)
     }
