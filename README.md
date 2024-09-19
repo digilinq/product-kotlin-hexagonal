@@ -1,6 +1,14 @@
 # product-kotlin-hexagonal
 Product service with kotlin and gradle using hexagonal pattern 
 
+## Run application locally
+
+Use docker-compose to run mongodb
+
+```shell
+gradle bootRun --args='--spring.profiles.active=local'
+```
+
 ## Gradle
 ```
 +--------------------+----------------------+-------------+--------------+-----------------------------------------+
