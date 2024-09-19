@@ -1,9 +1,9 @@
 package com.eightbits.eco.retail.infrastructure.web.resources
 
 import com.eightbits.eco.retail.domain.product.ProductService
-import com.eightbits.eco.retail.infrastructure.web.mappings.ProductMapper
 import com.eightbits.eco.retail.infrastructure.generated.v1.api.ProductsApi
 import com.eightbits.eco.retail.infrastructure.generated.v1.model.Product
+import com.eightbits.eco.retail.infrastructure.web.mappings.ProductMapper
 import org.slf4j.LoggerFactory
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.CrossOrigin
@@ -41,16 +41,21 @@ class ProductsResource(
 
     @CrossOrigin(origins = ["*"])
     override fun saveProduct(product: Product): ResponseEntity<Unit> {
-        logger.info("Save product: $product")
+        logger.debug("Saving product: {}", product)
 
-        val location: URI =
-            productService.save(mapper.map(product))
-                .let { p ->
-                    ServletUriComponentsBuilder.fromCurrentRequestUri()
-                        .path("/{id}").buildAndExpand(p.id).encode()
-                        .toUri()
-                }
-
+        val location: URI = productService.save(mapper.map(product)).let { p ->
+            ServletUriComponentsBuilder.fromCurrentRequestUri()
+                .path("/{id}").buildAndExpand(p.id).encode()
+                .toUri()
+        }
+        logger.debug("Product saved: {}", location.toString())
         return ResponseEntity.created(location).build()
+    }
+
+    @CrossOrigin(origins = ["*"])
+    override fun remove(id: UUID): ResponseEntity<Unit> {
+        logger.info("Deleting product with id: $id")
+        productService.remove(id)
+        return ResponseEntity.noContent().build()
     }
 }

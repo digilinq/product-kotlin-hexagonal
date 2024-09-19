@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: products
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: products
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: products
+        app: products
+    spec:
+      containers:
+        - name: products
+          image: docker.io/digilinq/products
+          env:
+            - name: APP_VERSION
+              value: "1.0.0"
+          envFrom:
+            - configMapRef:
+                name: products-config
+          ports:
+            - containerPort: 8080
+              name: service
+            - containerPort: 8081
+              name: management

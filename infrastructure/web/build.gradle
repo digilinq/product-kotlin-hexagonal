@@ -20,6 +20,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'com.fasterxml.jackson.module:jackson-module-kotlin'
     implementation 'org.jetbrains.kotlin:kotlin-reflect'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
 
     // Open API Generator
     implementation 'io.swagger.core.v3:swagger-annotations:2.2.20'
@@ -122,6 +123,12 @@ openApiGenerate {
 
 tasks.withType(KotlinCompile).configureEach {
     dependsOn("openApiGenerate")
+}
+
+tasks {
+    bootJar {
+        archiveFileName.set("products.jar")
+    }
 }
 
 //compileKotlin.dependsOn tasks.openApiGenerate
